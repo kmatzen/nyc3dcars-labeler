@@ -23,7 +23,9 @@ sudo rm /etc/nginx/sites-enabled/default
 
 sudo -u postgres psql labeler -f schema.sql
 
+echo "Please create your site config file in src/labeler/instance/settings.cfg.  There is a template in that directory."
+cp src/labeler/instance/settings.cfg.template src/labeler/instance/settings.cfg
+
 sudo service uwsgi restart
 sudo service nginx restart
 
-echo "Please create your site config file in src/labeler/instance/settings.cfg.  There is a template in that directory."
