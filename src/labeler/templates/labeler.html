@@ -1,0 +1,250 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'labeler' %}
+
+{% block instructions %}
+<h3>Task</h3>
+<p>We will give to you an image and an estimated ground plane.  The task at hand is to slide 3D car models on this ground plane such that they overlap the cars in the input images.  All passenger vehicles within 100 meters should be labeled.</p>
+<h3>FAQ</h3>
+<h4>What types of vehicles should I label?</h4>
+<p>You should label passenger vehicles.  These include:</p>
+<ul>
+    <li>Sedans</li>
+    <li>Coupes</li>
+    <li>Station Wagons</li>
+    <li>Sport Utility Vehicles</li>
+    <li>Multi-Purpose Vehicles (Minivans)</li>
+    <li>Pickup Trucks</li>
+</ul>
+<p>You should not label the following:</p>
+<ul>
+    <li>Full-size Vans</li>
+    <li>Buses</li>
+    <li>Ambulances</li>
+    <li>Fire Trucks</li>
+    <li>Construction Vehicles</li>
+    <li>Motorcycles</li>
+    <li>Bicycles</li>
+</ul>
+
+<p>If a vehicle is significantly different from any of the provided options, then do not label it.  Otherwise, select the type of vehicle that most closely resembles the vehicle in the image.</p>
+
+<h3>Example</h3>
+<iframe width="400" height="300" src="https://www.youtube.com/embed/VDv67eo6Gig?rel=0" frameborder="0" allowfullscreen></iframe>
+
+{% endblock %}
+
+{% block controls %}
+<h4>Buttons</h4>
+<ul>
+    <li><b>Add</b> - Select a new vehicle to add.</li>
+    <li><b>Delete</b> - Delete selected vehicle.</li>
+    <li><b>Next</b> - Submit solution and advance to next photo.</li>
+    <li><b>Bad Photo</b> - Select if the photo is unable to be labeled.  Reasons include <b>no visible ground</b>, <b>bad ground plane</b>, or provide a comment and tell us to look at the comment.</li>
+    <li><b>Problem</b> - Select to report a problem with the application.  Will take a screenshot of the application, but cannot take a screenshot of the browser.</li>
+</ul>
+<h4>Move Vehicle</h4>
+<b>Click</b> and <b>Drag</b>
+or
+<ul>
+    <li><b>W/Up</b> - Forward</li>
+    <li><b>A/Left</b> - Left</li>
+    <li><b>S/Down</b> - Back</li>
+    <li><b>D/Right</b> - Right</li>
+</ul>
+<h4>Rotate Vehicle</h4>
+<b>Left Shift</b> and <b>Click</b> and <b>Drag</b>
+or
+<ul>
+    <li><b>Q</b> - Rotate counter-clockwise looking down</li>
+    <li><b>E</b> - Rotate clockwise looking down</li>
+</ul>
+<h4>Adjust Ground Plane</h4>
+<ul>
+    <li><b>R</b> - Raise ground plane</li>
+    <li><b>F</b> - Lower ground plane</li>
+</ul>
+<h4>Other Commands</h4>
+<ul>
+    <li><b>Delete/Backspace</b> - Delete selected vehicle</li>
+    <li><b>Space</b> - Temporarily hide vehicles</li>
+    <li><b>Tab</b> - Rotate through selecting vehicles</li>
+</ul>
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                    <span class="caret"></span>
+                </button>
+                <ul id="vehicle_list" class="dropdown-menu">
+                </ul>
+            </div>
+
+            <button id="delete" type="button" class="btn">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+            </button>
+
+            <button id="submit" type="button" class="btn">
+                <span class="glyphicon glyphicon-arrow-right"></span> Submit
+            </button>
+
+             <div class="btn-group">
+                <button id="flag_btn" class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-ban-circle"></span> <text id="flag">Bad Photo</text>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="no_ground" href="#">No visible ground</a></li>
+                    <li><a id="bad_plane" href="#">Bad ground plane</a></li>
+                    <li><a id="defective_photo" href="#">Defective photo</a></li>
+                    <li><a id="other_bad" href="#">See comment</a></li>
+                </ul>
+            </div>
+
+            <button id="problem" type="button" class="btn">
+                <span class="glyphicon glyphicon-warning-sign"></span> Problem
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <input id="comment" type="text" placeholder="Comments" style="width:100%" class="form-control"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <canvas id="labeler_canvas" height=700 width=1140 tabindex="1"></canvas>
+    </div>
+</div>
+{% if not mturk %}
+<div id="home_modal" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="home_modal_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="home_modal_label">Save?</h3>
+            </div>
+            <div class="modal-body">
+                <p>Would you like to save before exiting?  All changes since last save will otherwise be lost.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal_exit" class="btn" data-dismiss="modal" aria-hidden="true">Discard changes</button>
+                <button id="modal_save" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="save_modal" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="save_modal_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="save_modal_label">Saving</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please wait.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="save_error_modal" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="save_error_modal_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="home_modal_label">Error saving</h3>
+            </div>
+            <div class="modal-body">
+                <p>An error was encountered while saving.  Please try again later.</p>
+                <text id=save_error_reason"></text>
+            </div>
+            <div class="modal-footer">
+                <button id="save_error_okay" data-dismiss="modal" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new_annotation_modal" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="new_annotation_modal_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="new_annotation_modal_label">Loading</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please wait.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="new_annotation_error" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="new_annotation_error_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="new_annotation_label">Error loading</h3>
+            </div>
+            <div class="modal-body">
+                <p>An error was encountered while loading.  Please try again later.</p>
+                <text id=load_error_reason"></text>
+            </div>
+            <div class="modal-footer">
+                <button id="load_error_okay" data-dismiss="modal" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div id="problem_modal" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="problem_modal_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="problem_modal_label">Report Problem</h3>
+            </div>
+            <div class="modal-body" style="max-height: 650px">
+                <label>Description</label>
+                <textarea rows=10 id="problem_description" name="description" placeholder="Provide a detailed description of the problem, please." style="width:515px" class="form-control"></textarea>
+                <label>Screenshot</label>
+                <div id="problem_screenshot" class="thumbnail span4" style="background-position:center;background-size:contain;background-repeat:no-repeat;height:200px"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button id="problem_submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="problem_error" style="z-index:10000" class="modal" tabindex="-1" role="dialog" aria-labelledby="problem_error_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="problem_error_label">Error contacting server</h3>
+            </div>
+            <div class="modal-body">
+                <p>An error was encountered while contacting the server.  Please try again later.</p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block nav %}
+{% set selected = 'labeler' %}
+{% include "nav.html" %}
+{% endblock %}

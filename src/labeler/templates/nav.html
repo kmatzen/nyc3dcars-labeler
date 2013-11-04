@@ -1,0 +1,11 @@
+{% set navigation = [('labeler', 'Label Cars'), ('occlusion', 'Label Occlusion'), ('daynight', 'Label Day/Night'), ('clicker', 'Click Cars')] %}
+<ul class="nav">
+    {% for link, label in navigation %}
+    <li 
+        {% if link == selected %}
+        class="active"
+        {% endif %}
+    ><a href="/{{ link }}">{{ label }}</a></li>
+    {% endfor %}
+</ul>
+

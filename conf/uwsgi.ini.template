@@ -1,0 +1,14 @@
+[uwsgi]
+# variables
+projectname = %APP%
+projectdomain = %SERVER_NAME%
+base = %ROOT%
+# config
+protocol = uwsgi
+venv = %(base)/venv
+pythonpath = %(base)/src/%(projectname)
+module = %(projectname)
+socket = /tmp/%(projectdomain).sock
+logto = %(base)/logs/uwsgi.log 
+plugins = python
+lazy = true

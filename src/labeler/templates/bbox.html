@@ -1,0 +1,53 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'bbox' %}
+
+{% block controls %}
+<ul>
+<li><b>Left click and drag red rectangle</b> - Resizes red rectangle</li>
+<li><b>Right click and drag</b> - Pan image</li>
+<li><b>Mouse scroll up/down</b> - Zoom in and out</li>
+</ul>
+{% endblock %}
+
+{% block instructions %}
+<h3>Task</h3>
+<p>Resize a red rectangle to <b>tightly</b> fit a car in
+{% if num_vehicles < 2 %}
+an image.
+{% else %}
+<b>{{ num_vehicles }}</b> images.
+{% endif %}
+</p>  <b>**Important**</b> Only move an edge if you can see where it would touch the car.
+<h3>Example</h3>
+<iframe width="400" height="300" src="https://www.youtube.com/embed/CE8dDuVyBQM?rel=0" frameborder="0" allowfullscreen></iframe>
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div id="image" class="span12" style="height:600px;background-repeat:no-repeat;background-position:center;background-size:contain" tabindex="1"></div>
+    </div>
+    <div class="row">
+        <div class="span10">
+            <button id="submit" type="button" class="btn btn-large btn-block btn-primary" data-loading-text="Submitting...">Submit</button>
+        </div>
+        <div id="progress" class="span2 pull-right" style="text-align:right"></div>
+    </div>
+<div id="spam_guard" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="spam_guard_label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="spam_guard_label">Please check your work</h3>
+        </div>
+        <div class="modal-body">
+            <p>We noticed you didn't move the red rectangle much.  Are you sure it tightly fits the car?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="spam_guard_cancel" data-dismiss="modal" class="btn">Let me fix it.</button>
+            <button id="spam_guard_ok" data-dismiss="modal" class="btn btn-primary">It is good.  Submit!</button>
+        </div>
+{% endblock %}

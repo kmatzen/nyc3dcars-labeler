@@ -1,0 +1,92 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'clicker' %}
+
+{% block controls %}
+<b>Left click on empty space</b> - Add point<br/>
+<b>Left click and drag on point</b> - Move point<br/>
+<b>Scroll</b> - Zoom in/out<br/>
+<b>Right click and drag on empty space</b> - Pan when zoomed in<br/>
+<b>Backspace/Delete</b> - Delete selected point in green</br>
+<b>Hold space</b> - Highlight points<br/>
+{% endblock %}
+
+{% block instructions %}
+<h3>Task</h3>
+{% if num_images < 2 %}
+<p>Click on each car in an image.</p>
+{% else %}
+<p>Click on each car in <b>{{ num_images }}</b> images.</p>
+{% endif %}
+<h3>Example</h3>
+<iframe width="400" height="300" src="https://www.youtube.com/embed/DEnirXP6b4w?rel=0" frameborder="0" allowfullscreen></iframe>
+<h3>FAQ</h3>
+<h4>What is considered a car?</h4>
+<p>Cars include sedans, coupes, sport utility vehicles (SUVs), multi-purpose vehicles (MPV or minivan), pickup trucks, Jeeps, hatchbacks, and station wagons.  Cars do <b>not</b> include full-sized vans, firetrucks, ambulances, delivery trucks, buses, bicycles, or motorcycles.</p>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example2.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example3.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example4.png"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example5.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example6.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example7.png"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example8.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example9.png"/>
+    </div>
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example11.png"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img class="img-thumbnail" src="/static/img/example10.png"/>
+    </div>
+</div>
+<h4>I do not see any cars in this image.  What do I do?</h4>
+<p>Submit the image with no labeled cars.</p>
+<h4>I am not certain what I see is a car.  Should I click it?</h4>
+<p>No.</p>
+<h4>I am certain this is a car, but it is very blurry.  Should I click it?</h4>
+<p>Yes.</p>
+{% endblock %}
+
+{% block main %}
+<div class="col-md-12">
+    <div class="row">
+        <div id="image" style="height:600px;width:100%;background-repeat:no-repeat;background-position:center;background-size:contain" tabindex="1"></div>
+    </div>
+    <div class="row">
+        <div class="btn-toolbar col-md-2">
+            <div class="btn-group">
+                <button id="submit" type="button" class="btn btn-primary" data-loading-text="Submitting...">Submit</button>
+            </div>
+        </div>
+        <div id="count" class="col-md-8"><b>0</b> cars clicked in this image.</div>
+        <div id="progress" class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

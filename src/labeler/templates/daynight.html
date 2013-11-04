@@ -1,0 +1,29 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'daynight' %}
+
+{% block controls %}
+TODO: Controls
+{% endblock %}
+
+{% block instructions %}
+TODO: Instructions
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-12">
+        <div id="image" style="height:600px;width:100%;background-repeat:no-repeat;background-position:center;background-size:contain"></div>
+    </div>
+</div>
+<div class="row">
+    <button id="day" type="button" class="btn btn-large btn-primary col-md-6" style="height:200px">Day</button>
+    <button id="night" type="button" class="btn btn-large btn-info col-md-6" style="height:200px">Night</button>
+</div>
+{% endblock %}
+

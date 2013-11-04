@@ -1,0 +1,44 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'occlusion' %}
+
+{% block instructions %}
+TODO: Instructions
+{% endblock %}
+
+{% block controls %}
+TODO: Controls
+{% endblock %}
+
+{% block imports %}
+<style>
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="span12">
+        <ul id="occluded" class="connectedSortable">
+            <li id="cat0" style="font-size:small" class="fake_thumbnail ui-state-default">&lt; Fully Visible<br/>Partially Occluded &gt;</li>
+            <li id="cat1" style="font-size:small" class="fake_thumbnail ui-state-default"><h3>25%</h3><br/>occluded</li>
+            <li id="cat2" style="font-size:small" class="fake_thumbnail ui-state-default"><h3>50%</h3><br/>occluded</li>
+            <li id="cat3" style="font-size:small" class="fake_thumbnail ui-state-default"><h3>75%</h3><br/>occluded</li>
+            <li id="cat4" style="font-size:small" class="fake_thumbnail ui-state-default">&lt; Partially occluded<br/>Fully occluded/Bad &gt;</li>
+        </ul>
+    </div>
+</div>
+<div class="btn-group" data-toggle="buttons">
+    <button id="submit" type="button" class="btn btn-primary" data-loading-text="Submitting...">Submit</button>
+</div>
+<li id="image_template" class="fake_thumbnail ui-state-default" style="visibility:hidden;position:absolute;background-size:contain;background-position:center;background-repeat:no-repeat"/>
+{% endblock %}
+
+{% block nav %}
+{% set selected = 'occlusion' %}
+{% include "nav.html" %}
+{% endblock %}

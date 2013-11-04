@@ -1,0 +1,10 @@
+{% if mturk %}
+    {% if instruction %}
+        {% extends "instructions.html" %}
+    {% else %}
+        {% extends "mturk.html" %}
+    {% endif %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+

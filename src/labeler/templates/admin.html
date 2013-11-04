@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.html" %}
+
+    <body class="boxed">
+        {% include "facebook.html" %}
+
+<script type="text/x-handlebars" data-template-name='application'>
+<div class="wrap">
+    <header id="header" role="banner">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo pull-left">
+                    <a href="/" class="navbar-brand">Labeler</a>
+                </div>
+                <nav class="collapse navbar-collapse menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                        <a href="#">
+                        Tasks
+                        <span>
+                        <i class="icon-angle-down"></i>
+                        </span>
+                        </a>
+                        {% include "links.html" %}</li>
+                        <li><a href="#order_modal" data-toggle="modal">Order</a></li>
+                        <li><a href="/admin/">Admin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="content">
+            <div class="container">
+                {% raw %}
+                {{ outlet }}
+                {% endraw %}
+            </div>
+        </div>
+    </div>
+    <div id="error_modal" style="z-index:10000" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="error_modal_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="error_modal_label">Error</h3>
+                </div>
+                <div class="modal-body">
+                    <p>An error was encountered.  Please try again later.</p>
+                    <div id="error_details"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="error_okay" data-dismiss="modal" class="btn btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="success_modal" style="z-index:10000" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="error_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Success!</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="success_details"></p>
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order_modal" style="z-index:10000" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="order_modal_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal" data-async action="/admin/order" method="POST" role="form">
+                    <div class="modal-header">
+                        <h3 id="order_modal_label">Order HITs</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="title">Title</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" placeholder="Title" name="title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="description">Description</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" placeholder="Description" name="description">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="keywords">Keywords</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" placeholder="Keywords" name="keywords">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="reward">Reward</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="Reward" step="0.01" name="reward">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="duration">Duration</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="Minutes" name="duration">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="task">Task</label>
+                            <div class="col-sm-10">
+                                <select name="task" class="form-control">
+                                    <option value="">--- SELECT ---</option>
+                                    <option value="clicker">Clicker</option>
+                                    <option value="approve_pairs">Approve Pairs</option>
+                                    <option value="bbox">Bounding Box</option>
+                                    <option value="labeler">Labeler</option>
+                                    <option value="daynight">Day/Night</option>
+                                    <option value="occlusion">Occlusion</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="quota">Quota</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="Quota" name="quota">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="limit">Limit</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="Limit" name="limit">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="batch">Batch</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="Batch" name="batch">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="pin">PIN</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" placeholder="PIN" name="pin">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="sandbox">Sandbox</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Ok</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "footer.html" %}
+</script>
+
+{% raw %}
+<script type="text/x-handlebars" id="workers">
+{{each controller itemViewClass="App.WorkerRowView"}}
+</script>
+
+<script type="text/x-handlebars" id="workers/worker">
+<div class="row">
+    <div class="col-md-3">
+    {{#linkTo 'worker' this}}{{ id }}{{/linkTo}}
+    </div>
+    <div class="col-md-3">
+    {{ date-format lastactivity }}
+    </div>
+    <div class="col-md-3">
+    <button type="button" {{ bindAttr class="toggleClass" }} data-toggle="button" id="trust-{{ unbound id }}">Trust</button>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="worker">
+{{ id }}
+</script>
+
+<script type="text/x-handlebars" id="jobs">
+{{each controller itemViewClass="App.JobRowView"}}
+</script>
+
+<script type="text/x-handlebars" id="jobs/job">
+<div class="well col-md-12">
+    <div class="row">
+        <div class="col-md-1" id="preview" {{ bindAttr style="iconStyle" }}></div>
+        <div class="col-md-4">
+            <a {{ bindAttr href="mturkHref" }}><b id="header">{{ title }}</b></a>
+        </div>
+        <div class="col-md-4">
+            <div class="progress">
+                <div id="SubmittedProgress" class="progress-bar progress-bar-info" {{ bindAttr style="submittedStyle" }}></div>
+                <div id="ApprovedProgress" class="progress-bar progress-bar-success" {{ bindAttr style="approvedStyle" }}></div>
+                <div id="RejectedProgress" class="progress-bar progress-bar-danger" {{ bindAttr style="rejectedStyle" }}></div>
+                <div id="PendingProgress" class="progress-bar progress-bar-warning" {{ bindAttr style="pendingStyle" }}></div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <a id="delete-{{unbound id}}" class="btn btn-danger">Delete</a>
+        </div>
+        <div class="col-md-1">
+            {{#linkTo 'job' this classNames="btn btn-primary"}}Details{{/linkTo}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="description">{{ description }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" id="count">{{ count }}</div>
+        <div class="col-md-2" id="reward">${{ reward }}</div>
+        <div class="col-md-2" id="duration">{{ duration-format duration }}</div>
+        <div class="col-md-4" id="keywords">{{ keywords }}</div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="job">
+<div class="well">
+    <div class="row">
+        <div class="col-md-1" id="preview" {{ bindAttr style="iconStyle" }}></div>
+        <div class="col-md-4">
+            <a {{ bindAttr href="mturkHref" }}><b id="header">{{ title }}</b></a>
+        </div>
+        <div class="col-md-4">
+            <div class="progress">
+                <div id="SubmittedProgress" class="progress-bar progress-bar-info" {{ bindAttr style="submittedStyle" }}></div>
+                <div id="ApprovedProgress" class="progress-bar progress-bar-success" {{ bindAttr style="approvedStyle" }}></div>
+                <div id="RejectedProgress" class="progress-bar progress-bar-danger" {{ bindAttr style="rejectedStyle" }}></div>
+                <div id="PendingProgress" class="progress-bar progress-bar-warning" {{ bindAttr style="pendingStyle" }}></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="description">{{ description }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" id="count">{{ count }}</div>
+        <div class="col-md-2" id="reward">{{ reward }}</div>
+        <div class="col-md-2" id="duration">{{ duration-format duration }}</div>
+        <div class="col-md-4" id="keywords">{{ keywords }}</div>
+    </div>
+    <div id="details" class="row">
+        <ul id="tabs" class="nav nav-tabs">
+            <li class="active"><a id="Submitted-tab" href="#Submitted" data-toggle="tab">
+                <span id="Submitted-count" class="badge badge-info">{{ Submitted }}</span> Submitted
+            </a></li>
+            <li><a id="Approved-tab" href="#Approved" data-toggle="tab">
+                <span id="Approved-count" class="badge badge-success">{{ Approved }}</span> Approved
+            </a></li>
+            <li><a id="Rejected-tab" href="#Rejected" data-toggle="tab">
+                <span id="Rejected-count" class="badge badge-important">{{ Rejected }}</span> Rejected
+            </a></li>
+            <li><a id="Pending-tab" href="#Pending" data-toggle="tab">
+                <span id="Pending-count" class="badge badge-warning">{{ Pending }}</span> Pending
+            </a></li>
+        </ul>
+        <div id="assignments" class="tab-content">
+            <div class="tab-pane active" id="Submitted">
+            <div class="container">
+            {{each submitted_assignments itemViewClass="App.SubmittedAssignmentWellView"}}
+            </div>
+            <ul class="pager">
+                <li class="previous disabled"><a>&larr; Older</a></li>
+                <li class="next disabled"><a>Newer &rarr;</a></li>
+            </ul>
+            </div>
+            <div class="tab-pane" id="Approved">
+            <div class="container">
+            {{each approved_assignments itemViewClass="App.ReviewedAssignmentWellView"}}
+            </div>
+            <ul class="pager">
+                <li class="previous disabled"><a>&larr; Older</a></li>
+                <li class="next disabled"><a>Newer &rarr;</a></li>
+            </ul>
+            </div>
+            <div class="tab-pane" id="Rejected">
+            <div class="container">
+            {{each rejected_assignments itemViewClass="App.ReviewedAssignmentWellView"}}
+            </div>
+            <ul class="pager">
+                <li class="previous disabled"><a>&larr; Older</a></li>
+                <li class="next disabled"><a>Newer &rarr;</a></li>
+            </ul>
+            </div>
+            <div class="tab-pane" id="Pending">
+            <div class="container">
+            {{each pending_assignments itemViewClass="App.PendingAssignmentWellView"}}
+            </div>
+            <ul class="pager">
+                <li class="previous disabled"><a>&larr; Older</a></li>
+                <li class="next disabled"><a>Newer &rarr;</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="job/submitted_assignment">
+<div class="well col-md-4">
+    <div>{{ id }} - {{ username }}</div>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <a class="btn btn-primary" {{ bindAttr href="view_href" }}>View</a>
+            <a id="approve-{{unbound id}}" class="btn btn-success">Approve</a>
+            <a id="reject-{{unbound id}}" class="btn btn-danger">Reject</a>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="job/reviewed_assignment">
+<div class="well col-md-4">
+    <div>{{ id }} - {{ username }}</div>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <a class="btn btn-primary" {{ bindAttr href="view_href" }}>View</a>
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" id="job/pending_assignment">
+<div class="well col-md-4">
+    <div>{{ id }} - {{ username }}</div>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <a class="btn btn-primary" {{ bindAttr href="view_href" }}>View</a>
+        </div>
+    </div>
+</div>
+</script>
+
+        {% endraw %}
+
+        {% include "tail.html" %}
+    </body>
+</html>

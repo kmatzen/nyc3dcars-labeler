@@ -1,0 +1,74 @@
+/*Magenta #ec008c */
+
+.btn:focus, .subscribe-btn, .progress .progress-bar, .accordionMod .panel-heading .current, #current:after, .tp-leftarrow.default:hover,.tp-rightarrow.default:hover, .nivo-prevNav:hover, .nivo-nextNav:hover, .contact-box:hover, #options li a.selected, .ch-info .ch-info-back {
+    background: #ec008c;
+}
+
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus, .pager li > a:hover, .pager li > a:focus, .navbar-toggle i, .cn-wrapper li a, .cn-wrapper:after {
+    background-color: #ec008c;
+    color: #fff;
+}
+
+#options li a.selected {
+	border: 1px solid #ec008c;
+}
+
+.ie8 .btn-color, .ie9 .btn-color {
+	background: #ec008c !important;
+}
+
+.ie8 .btn-color:hover, .ie9 .btn-color:hover {
+	background: #fb61bd !important;
+}
+
+.btn-color:hover, .subscribe-btn:hover {
+	background: -webkit-linear-gradient(#fb61bd,#ec008c);
+	background: -moz-linear-gradient(#fb61bd,#ec008c);
+	background: -o-linear-gradient(#fb61bd,#ec008c);
+	background: -ms-linear-gradient(#fb61bd,#ec008c);
+	background: linear-gradient(#fb61bd,#ec008c);
+}
+
+.btn-color, .subscribe-btn {
+	background: -webkit-linear-gradient(#ec008c,#fb61bd);
+	background: -moz-linear-gradient(#ec008c,#fb61bd);
+	background: -o-linear-gradient(#ec008c,#fb61bd);
+	background: -ms-linear-gradient(#ec008c,#fb61bd);
+	background: linear-gradient(#ec008c,#fb61bd);
+	border: 1px solid #a05280;
+
+	-webkit-box-shadow: inset 0 1px 1px 0 #e4a6cb, 0 2px 0 -1px rgba(0,0,0,0.2);
+	box-shadow: inset 0 1px 1px 0 #e4a6cb, 0 2px 0 -1px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+
+#current,.menu ul li a:hover,.menu ul>li:hover>a {
+    border-bottom: 3px solid #ec008c;
+}
+
+ul.why li:before {
+    background: #ec008c;
+}
+
+.menu ul ul {
+    border-top: 3px solid #ec008c !important;
+}
+
+#horizontal-tabs ul.tabs li.current {
+    border-top: 2px solid #ec008c;
+}
+
+#vertical-tabs ul.tabs li.current {
+    border-left: 2px solid #ec008c;
+}
+
+
+.author-content, div.content-box.big, #cn-tabs .service, .comment-des, .contact-box {
+	border-bottom-color:#ec008c;
+}
+
+a, .post-item h4 a:hover, .cn-wrapper li a:hover, .cn-wrapper li a.active {
+    color: #ec008c;
+}

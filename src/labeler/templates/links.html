@@ -1,0 +1,11 @@
+{% set navigation = [('labeler', 'Label Cars'), ('occlusion', 'Label Occlusion'), ('daynight', 'Label DayNight'), ('clicker', 'Click Cars'), ('bbox', 'Adjust Bounding Boxes'), ('approve_pairs', 'Approve Pairs')] %}
+<ul class="dropdown-menu">
+    {% for link, label in navigation %}
+    <li style="z-index: 10000;"
+    ><a 
+    {% if link == selected|default("") %}
+    {% endif %}
+    href="/{{ link }}/">{{ label }}</a></li>
+    {% endfor %}
+</ul>
+

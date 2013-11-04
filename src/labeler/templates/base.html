@@ -1,0 +1,92 @@
+{% extends "outline.html" %}
+
+{% block body %}
+
+<script type="text/x-handlebars" data-template-name='application'>
+<div class="wrap">
+    <header id="header" role="banner">
+        <div class="main-header">
+            <div class="container">
+                <div class="logo pull-left">
+                    <a href="/" class="navbar-brand">Labeler</a>
+                </div>
+                <nav class="collapse navbar-collapse menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                        <a href="#">
+                            Tasks <i class="icon-angle-down"></i>
+                        </a>
+                        {% include "links.html" %}</li>
+                        <li><a id="instructions_button">Instructions</a></li>
+                        <li><a id="controls_button">Controls</a></li>
+                        <li><a id="feedback">Feedback</a></li>
+                        <li><a href="/admin/">Admin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="content">
+            <div class="container">
+                {% raw %}
+                {{ outlet }}
+                {% endraw %}
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</div>
+</script>
+
+<script type="text/x-handlebars" id="login">
+<div class="form-group" id="usernameHolder">
+    <input class="col-md-4 form-control" id="username" type="text" placeholder="Username">
+    <button class="btn" type="button" id="login">GO</button>
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks">
+<div>
+    <h2 id="username_header" style="display:inline">
+    {% raw %}
+    {{ id }}
+    {% endraw %}
+    </h2>
+    <button id="logout" class="btn pull-right"><span class="glyphicon glyphicon-off"></span> Log off</button>
+    <div>
+    {% raw %}
+    {{ outlet }}
+    {% endraw %}
+    </div>
+</div>
+{% raw %}
+{{ partial "modals" }}
+{% endraw %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks/edit">
+{% raw %}
+{{ partial "taskMain" }}
+{% endraw %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="_taskMain">
+{% block main %}
+{% endblock %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks/new">
+{% raw %}
+{{ partial "taskMain" }}
+{% endraw %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks/view">
+{% raw %}
+{{ partial "taskMain" }}
+{% endraw %}
+</script>
+
+
+{% endblock %}

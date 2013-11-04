@@ -1,0 +1,70 @@
+server {
+  listen         80;
+  server_name    %SERVER_NAME%;
+
+  # This is to support uploading screenshots of the Labeler interface.
+  client_max_body_size 20M;
+
+  root          %ROOT%;
+  access_log    %ROOT%/logs/access.log;
+  error_log     %ROOT%/logs/error.log;
+
+  # I use this rewrite hack to work around Ember.js's URLs with # in them and
+  # how mechanical turk incorrectly appends the query string to the end of the URL
+  # rather than between the URI and the #.  I give these specially crafted __MTURK__
+  # URLs to mechanical turk and then detect them here.
+  rewrite        ^/(.*)/__MTURK__/(.*)? /$1/$is_args$args#/$2? permanent;
+
+  location / {
+    include uwsgi_params;
+    uwsgi_pass unix:///tmp/%SERVER_NAME%.sock;
+  }
+
+  location /static/ {
+    
+  }
+}
+
+#
+# Here's the alternate config that I use to enable SSL.
+#
+
+#server {
+#  listen         80; 
+#  server_name    %SERVER_NAME%;
+#
+#  root          %ROOT%;
+#  access_log    %ROOT%/logs/access.log;
+#  error_log     %ROOT%/logs/error.log;
+#
+#  location / { 
+#    rewrite        ^ https://$server_name$request_uri? permanent;
+#  }
+#}
+#
+#server {
+#  listen              443 ssl;
+#  server_name         %SERVER_NAME%;
+#  ssl_certificate     %SERVER_NAME%.crt;
+#  ssl_certificate_key %SERVER_NAME.key;
+#  ssl_protocols       SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+#  ssl_ciphers         HIGH:!aNULL:!MD5;
+#
+#  client_max_body_size 20M;
+#
+#  root          %ROOT%;
+#  access_log    %ROOT%/logs/access-ssl.log;
+#  error_log     %ROOT%/logs/error-ssl.log;
+#
+#  rewrite        ^/(.*)/__MTURK__/(.*)? /$1/$is_args$args#/$2? permanent;
+#
+#  location / { 
+#    include uwsgi_params;
+#    uwsgi_pass unix:///tmp/%SERVER_NAME%.sock;
+#  }
+#
+#  location /static/ {
+#       
+#  }
+#}
+

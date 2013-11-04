@@ -1,0 +1,65 @@
+{% if instruction %}
+    {% extends "instructions.html" %}
+{% elif mturk %}
+    {% extends "mturk.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+{% set selected = 'approve_pairs' %}
+
+{% block controls %}
+Left mouse click to select.
+{% endblock %}
+
+{% block instructions %}
+<h3>Task</h3>
+<p>You will be presented with 
+{% if num_pairs < 2 %}
+a pair 
+{% else %}
+<b>{{ num_pairs }}</b> pairs of
+{% endif %}
+ images of cars.  You must click one of four buttons:</p>
+<ul>
+    <li><b>No match</b> - The red rectangles highlight two different vehicles.</li>
+    <li><b>Left image</b> - The vehicles match, but the image on the left has a tighter fitting red rectangle.</li>
+    <li><b>Right image</b> - The vehicles match, but the image on the right has a tighter fitting red rectangle.</li>
+    <li><b>Match - equally good</b> - The vehicles match and their red rectangles are equally tight fitting.</li>
+</ul>
+<h3>Examples</h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <img class="thumbnail" src="/static/img/approve_pair_instructions/example1.png"/>
+            <p><b>Correct answer: Left image.</b>  The same car is highlighted in both images, but the red rectangle fits better on the left.  The red rectangle on the right cuts off the car on the right of the image.</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <img class="thumbnail" src="/static/img/approve_pair_instructions/example2.png"/>
+            <p><b>Correct answer: Left image.</b>  The same car is highlighted in both images, but the red rectangle fits better on the left.  The red rectangle on the right covers too much of the ground.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<h3>Are these the same vehicle?  If yes, which box looks better?</h3>
+<div id="options">
+    <div class="row">
+        <div id="image1" disabled="true" class="col-md-6 btn btn-large btn-primary" style="height:400px;background-repeat:no-repeat;background-position:center;background-size:contain"></div>
+        <div id="image2" disabled="true" class="col-md-6 btn btn-large btn-primary" style="height:400px;background-repeat:no-repeat;background-position:center;background-size:contain"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 btn btn-large btn-success" disabled="true" id="good">Match - equally good</div>
+        <div class="col-md-6 btn btn-large btn-danger" disabled="true" id="bad">No match</div>
+    </div>
+</div>
+<div class="row">
+    <div id="next" class="btn btn-primary" style="visibility:hidden">Next</div>
+    <div id="progress" class="col-md-2 pull-right"></div>
+</div>
+{% endblock %}
+

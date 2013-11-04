@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+    {% include "head.html" %}
+
+    <body class="boxed home">
+        {% block body %}
+        {% endblock %}
+
+        <script type="text/x-handlebars" data-template-name="_modals"> 
+        <div id="instructions_modal" class="modal fade" style="z-index:10000" tabindex="-1" aria-labelledby="instruction_modal_label" aria-hidden="true" data-width="990">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Instructions</h3>
+                    </div>
+                    <div class="modal-body">
+                        {% block instructions %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls_modal" class="modal fade" style="z-index:10000" tabindex="-1" aria-labelledby="controls_modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Controls</h3>
+                    </div>
+                    <div class="modal-body">
+                        {% block controls %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="feedback_modal" class="modal fade" style="z-index:10000" tabindex="-1" aria-labelledby="feedback_modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Feedback</h3>
+                    </div>
+                    <div class="modal-body">
+                        <textarea rows=10 id="feedback_description" name="description" style="width:515px"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button id="feedback_submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success_modal" class="modal fade" style="z-index:10000" tabindex="-1" role="dialog" aria-labelledby="error_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Success!</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p id="success_details"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error_modal" class="modal fade" style="z-index:10000" tabindex="-1" role="dialog" aria-labelledby="error_modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="error_modal_label">Error</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>An error was encountered.  Please try again later.</p>
+                        <div id="error_details"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="error_okay" data-dismiss="modal" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </script>
+        {% include "tail.html" %}
+
+    </body>
+</html>

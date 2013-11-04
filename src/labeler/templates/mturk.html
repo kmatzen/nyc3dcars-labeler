@@ -1,0 +1,62 @@
+{% extends "outline.html" %}
+
+{% block body %}
+<script type="text/x-handlebars" data-template-name='application'>
+<div class="wrap">
+    <header id="header" role="banner">
+        <div class="main-header">
+            <div class="container">
+                <nav class="collapse navbar-collapse menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="instructions_button">Instructions</a></li>
+                        <li><a id="controls_button">Controls</a></li>
+                        <li><a id="feedback">Feedback</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="main">
+        <div class="content">
+            <div class="container">
+                {% raw %}
+                {{ outlet }}
+                {% endraw %}
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer-bottom">
+        <div class="container">
+            <div>Copyright &copy; 2012-2013 Kevin Matzen.  All Rights Reserved.</div>
+        </div>
+    </div>
+</footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks">
+<div>
+    {% raw %}
+    {{ outlet }}
+    {% endraw %}
+</div>
+{% raw %}
+{{ partial "modals" }}
+{% endraw %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="tasks/edit">
+{% raw %}
+{{ partial "taskMain" }}
+{% endraw %}
+</script>
+
+<script type="text/x-handlebars" data-template-name="_taskMain">
+{% block main %}
+{% endblock %}
+</script>
+
+
+{% endblock %}
