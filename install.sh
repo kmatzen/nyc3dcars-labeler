@@ -20,7 +20,8 @@ sudo -u postgres createdb labeler
 
 sudo rm /etc/nginx/sites-enabled/default
 
+psql labeler -f schema.sql
+
 sudo service uwsgi restart
 sudo service nginx restart
-
 
