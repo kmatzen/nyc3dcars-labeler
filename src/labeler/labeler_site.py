@@ -17,7 +17,7 @@ from email.mime.multipart import MIMEMultipart
 APP = create_app(__name__)
 
 
-@APP.route('/iqwrylafhsf/')
+@APP.route('/')
 def index():
     """The main page for the project."""
 
