@@ -1,6 +1,6 @@
 a[name="target"] {
-  padding-top: 150px;
-  margin-top: -150px;
+  padding-top: 85px;
+  margin-top: -85px;
   display: inline-block; /* required for webkit browsers */
 }
 

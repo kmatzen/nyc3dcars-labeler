@@ -33,17 +33,17 @@
             <header id="header">
                 <div class="main-header">
                     <div class="container">
-                        <div class="topnav navbar-header">
-                            <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
-                                <i class="icon-angle-down icon-current"></i>
-                            </a> 
-                        </div>
                         <div class="logo pull-left">
                             <h1>
                                 <a href="#">
                                     <img src="/static/img/logo.png" alt="labeler" height="60">
                                 </a>
                             </h1>
+                        </div>
+                        <div class="mobile navbar-header">
+                            <a class="navbar-toggle" data-toggle="collapse" href=".navbar-collapse">
+                                <i class="icon-reorder icon-2x"></i>
+                            </a>
                         </div>
                         <nav class="collapse navbar-collapse menu">
                             <ul class="nav navbar-nav sf-menu">
@@ -93,198 +93,195 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-content">
-                    <div class="container">
-                        <a id="features" name="target"></a> 
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="content-box big ch-item bottom-pad-small">
-                                    <div class="ch-info-wrap">
-                                        <div class="ch-info">
-                                            <div class="ch-info-front ch-img-1"><i class="icon-camera"></i></div>
-                                            <div class="ch-info-back">
-                                                <i class="icon-camera"></i>
-                                            </div>
+                <a id="features" name="target"></a> 
+                <div class="container" style="padding-top:40px;">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="content-box big ch-item bottom-pad-small">
+                                <div class="ch-info-wrap">
+                                    <div class="ch-info">
+                                        <div class="ch-info-front ch-img-1"><i class="icon-camera"></i></div>
+                                        <div class="ch-info-back">
+                                            <i class="icon-camera"></i>
                                         </div>
-                                    </div>
-                                    <div class="content-box-info">
-                                        <h2>3D Reconstructions</h2>
-                                        <p>Each photograph in NYC3DCars has been geo-registered to the Earth, providing full camera intrinsics and extrinsics in an Earth-Centered, Earth-Fixed coordinate system enabling seamless integration with existing geospatial solutions.</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="content-box big ch-item bottom-pad-small">
-                                    <div class="ch-info-wrap">
-                                        <div class="ch-info">
-                                            <div class="ch-info-front ch-img-1"><i class="icon-compass"></i></div>
-                                            <div class="ch-info-back">
-                                                <i class="icon-compass"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="content-box-info">
-                                        <h2>Geographic Data</h2>
-                                        <p>Companion databases such as those provided by <a href="//www.openstreetmap.org">OpenStreetMap</a> and <a href="//nycopendata.socrata.com">NYC OpenData</a> have been integrated for easy access to geographic features such as road, sidewalk, and median polygons as well as road network connectivity.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="content-box big ch-item">
-                                    <div class="ch-info-wrap">
-                                        <div class="ch-info">
-                                            <div class="ch-info-front ch-img-1"><i class="icon-truck"></i></div>
-                                            <div class="ch-info-back">
-                                                <i class="icon-truck"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="content-box-info">
-                                        <h2>Vehicle Annotations</h2>
-                                        <p>Human annotators have provided detailed descriptions for vehicles contained in the database.  Annotations include a full 6 degree of freedom vehicle pose, vehicle type, 2D vehicle bounding box, and approximate photo time of day.</p>
-                                    </div>
+                                <div class="content-box-info">
+                                    <h2>3D Reconstructions</h2>
+                                    <p>Each photograph in NYC3DCars has been geo-registered to the Earth, providing full camera intrinsics and extrinsics in an Earth-Centered, Earth-Fixed coordinate system enabling seamless integration with existing geospatial solutions.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
-                                <iframe src="//player.vimeo.com/video/76784236" width="100%" height="530" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="content-box big ch-item bottom-pad-small">
+                                <div class="ch-info-wrap">
+                                    <div class="ch-info">
+                                        <div class="ch-info-front ch-img-1"><i class="icon-compass"></i></div>
+                                        <div class="ch-info-back">
+                                            <i class="icon-compass"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content-box-info">
+                                    <h2>Geographic Data</h2>
+                                    <p>Companion databases such as those provided by <a href="//www.openstreetmap.org">OpenStreetMap</a> and <a href="//nycopendata.socrata.com">NYC OpenData</a> have been integrated for easy access to geographic features such as road, sidewalk, and median polygons as well as road network connectivity.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="content-box big ch-item">
+                                <div class="ch-info-wrap">
+                                    <div class="ch-info">
+                                        <div class="ch-info-front ch-img-1"><i class="icon-truck"></i></div>
+                                        <div class="ch-info-back">
+                                            <i class="icon-truck"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content-box-info">
+                                    <h2>Vehicle Annotations</h2>
+                                    <p>Human annotators have provided detailed descriptions for vehicles contained in the database.  Annotations include a full 6 degree of freedom vehicle pose, vehicle type, 2D vehicle bounding box, and approximate photo time of day.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+                            <iframe src="//player.vimeo.com/video/76784236" width="100%" height="530" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="recentworks">
+                <a id="explore" name="target"></a> 
+                <a id="download" name="target"></a>
+                <div class="container">
+                        <!--
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h2 class="title">Explore</h2>
+                                <p>Try one of our demos to become more accustomed to the data contained in our database.  WebGL required.</p>
+                            </div>
+                            <div class="portfolio two-column isotope" style="height:500">
+                                <div class="web jquery item isotope-item col-md-4 col-sm-4 col-lg-4">
+                                    <div class="portfolio-item">
+                                        <a href="todo" class="portfolio-item-link">
+                                            <span class="portfolio-item-hover" style="opacity: 0;"></span>
+                                            <span class="fullscreen" style="top: 65%; opacity: 0;"><i class="icon-search"></i></span><img src="/static/img/portfolio/img-portfolio.jpg" alt=" ">
+                                        </a>
+                                        <div class="portfolio-item-title">
+                                            <a href="single-project.html">Photo Browser</a>
+                                            <p>
+                                                  Browse our catalog of photographs and examine the 3D vehicle annotations.
+                                            </p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="web jquery item isotope-item col-md-4 col-sm-4 col-lg-4">
+                                    <div class="portfolio-item">
+                                        <a href="todo" class="portfolio-item-link">
+                                            <span class="portfolio-item-hover"></span>
+                                            <span class="fullscreen"><i class="icon-search"></i></span><img src="/static/img/portfolio/img-portfolio.jpg" alt=" ">
+                                        </a>
+                                        <div class="portfolio-item-title">
+                                            <a href="single-project.html">Viewpoint Retrieval</a>
+                                            <p>
+                                                  Explore our database by querying for annotations by viewpoint.
+                                            </p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h2 class="title">Download</h2>
+                                <p>Use of <a href="http://www.postgresql.org/">PostgreSQL</a> with the <a href="http://postgis.net/">PostGIS</a> package is recommended for working with any of the spatial or geographic data and is required for the use of many of the analysis tools.  JPEG images are distributed separately per reconstruction due to the large size. Geographic data can be obtained either through the original sources or a preprocessed SQL dump can be obtained here.</p>
+                                <p>Files labeled as PGSQL can be imported into a PostgreSQL database using the following command:</p>
+                                <pre>zcat filename.dump.gz &gt; | pg_restore --dbname=nyc3dcars</pre>
+                                <p>Alternatively, we provide a <a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars_bootstrap.py">script</a> to help download and import all necessary assets.</p>
+            
+                                <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In additional, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), and our nyc3dcars-toolkit analysis scripts.</p>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="title">Images</h4>
+                                <ul class="check-list why">
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/times-square-images.tar.gz">Times Square Images</a></li>
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/apple-images.tar.gz">Apple Store Images</a></li>
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/macys-images.tar.gz">Macy's Store Images</a></li>
+                                </ul>
+                                <h4 class="title">Vehicle Annotations and Image Metadata</h4>
+                                <ul class="check-list why">
+                                    <li><a>NYC3DCars - CSV (Coming Soon)</a></li>
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars.tar.gz">NYC3DCars - PGSQL</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="title">Geographic Data</h4>
+                                <ul class="check-list why">
+                                    <li><a href="http://gis.nyc.gov/doitt/dl/gisdata/shp/ROADBED.zip">Road Polygons - Shapefile</a></li>
+                                    <li><a href="http://www.nyc.gov/html/gis/downloads/bigapps/DOITT_SIDEWALK_01_28JUL2009.zip">Sidewalk Polygons - Shapefile</a></li>
+                                    <li><a href="http://www.nyc.gov/html/gis/downloads/bigapps/DOITT_MEDIAN_01_28JUL2009.zip">Median Polygons - Shapefile</a></li>
+                                    <li><a href="http://gis.nyc.gov/doitt/dl/gisdata/shp/STREET_CENTERLINE.zip">Road Centerlines - Shapefile</a></li>
+                                    <li><a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/xe92-xce7">Building Footprints - Geodatabase</a></li>
+                                </ul>
+                                <ul class="check-list why">
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/geodatabase.dump.gz">Geodatabase - PGSQL</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="title">Reconstructions</h4>
+                                <ul class="check-list why">
+                                    <li><a>Bundler Output (Coming Soon)</a></li>
+                                </ul>
+                                <h4 class="title">Tools</h4>
+                                <ul class="check-list why">
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/dpm-models.tar.gz">Trained Detection Models</a></li>
+                                </ul>
+                                <ul class="check-list external">
+                                    <li><a href="https://github.com/kmatzen/pydro">Detection Software (pydro)</a></li>
+                                    <li><a href="https://github.com/kmatzen/nyc3dcars-toolkit">Analysis Tools (nyc3dcars-toolkit)</a></li>
+                                    <li><a href="https://github.com/kmatzen/nyc3dcars-labeler">Annotation Software (nyc3dcars-labeler)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">NYC3DCars</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Kevin Matzen</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <a name="target" id="paper"></a>
                     <div class="container">
-                        <a id="explore" name="target"></a> 
-                            <!--
-                            <div class="row">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <h2 class="title">Paper</h2>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h2 class="title">Explore</h2>
-                                    <p>Try one of our demos to become more accustomed to the data contained in our database.  WebGL required.</p>
+                                    <a href="/static/paper.pdf"><div style="background: #ffffff url(/static/img/paper.jpg) no-repeat center center; background-size:contain; height:400px"></div></a>
                                 </div>
-                                <div class="portfolio two-column isotope" style="height:500">
-                                    <div class="web jquery item isotope-item col-md-4 col-sm-4 col-lg-4">
-                                        <div class="portfolio-item">
-                                            <a href="todo" class="portfolio-item-link">
-                                                <span class="portfolio-item-hover" style="opacity: 0;"></span>
-                                                <span class="fullscreen" style="top: 65%; opacity: 0;"><i class="icon-search"></i></span><img src="/static/img/portfolio/img-portfolio.jpg" alt=" ">
-                                            </a>
-                                            <div class="portfolio-item-title">
-                                                <a href="single-project.html">Photo Browser</a>
-                                                <p>
-                                                      Browse our catalog of photographs and examine the 3D vehicle annotations.
-                                                </p>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="web jquery item isotope-item col-md-4 col-sm-4 col-lg-4">
-                                        <div class="portfolio-item">
-                                            <a href="todo" class="portfolio-item-link">
-                                                <span class="portfolio-item-hover"></span>
-                                                <span class="fullscreen"><i class="icon-search"></i></span><img src="/static/img/portfolio/img-portfolio.jpg" alt=" ">
-                                            </a>
-                                            <div class="portfolio-item-title">
-                                                <a href="single-project.html">Viewpoint Retrieval</a>
-                                                <p>
-                                                      Explore our database by querying for annotations by viewpoint.
-                                                </p>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
-                            <a id="download" name="target"></a>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <h2 class="title">Download</h2>
-                                    <p>Use of <a href="http://www.postgresql.org/">PostgreSQL</a> with the <a href="http://postgis.net/">PostGIS</a> package is recommended for working with any of the spatial or geographic data and is required for the use of many of the analysis tools.  JPEG images are distributed separately per reconstruction due to the large size. Geographic data can be obtained either through the original sources or a preprocessed SQL dump can be obtained here.</p>
-                                    <p>Files labeled as PGSQL can be imported into a PostgreSQL database using the following command: <code>zcat filename.dump.gz &gt; | pg_restore --dbname=nyc3dcars</code>.  Alternatively, we provide a <a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars_bootstrap.py">script</a> to help download and import all necessary assets.</p>
-                
-                                    <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In additional, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), and our nyc3dcars-toolkit analysis scripts.</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h4 class="title">Images</h4>
-                                    <ul class="check-list why">
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/times-square-images.tar.gz">Times Square Images</a></li>
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/apple-images.tar.gz">Apple Store Images</a></li>
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/macys-images.tar.gz">Macy's Store Images</a></li>
-                                    </ul>
-                                    <hr/>
-                                    <h4 class="title">Vehicle Annotations and Image Metadata</h4>
-                                    <ul class="check-list why">
-                                        <li><a>NYC3DCars - CSV (Coming Soon)</a></li>
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars.tar.gz">NYC3DCars - PGSQL</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h4 class="title">Geographic Data</h4>
-                                    <ul class="check-list why">
-                                        <li><a href="http://gis.nyc.gov/doitt/dl/gisdata/shp/ROADBED.zip">Road Polygons - Shapefile</a></li>
-                                        <li><a href="http://www.nyc.gov/html/gis/downloads/bigapps/DOITT_SIDEWALK_01_28JUL2009.zip">Sidewalk Polygons - Shapefile</a></li>
-                                        <li><a href="http://www.nyc.gov/html/gis/downloads/bigapps/DOITT_MEDIAN_01_28JUL2009.zip">Median Polygons - Shapefile</a></li>
-                                        <li><a href="http://gis.nyc.gov/doitt/dl/gisdata/shp/STREET_CENTERLINE.zip">Road Centerlines - Shapefile</a></li>
-                                        <li><a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/xe92-xce7">Building Footprints - Geodatabase</a></li>
-                                    </ul>
-                                    <hr/>
-                                    <ul class="check-list why">
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/geodatabase.dump.gz">Geodatabase - PGSQL</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <h4 class="title">Reconstructions</h4>
-                                    <ul class="check-list why">
-                                        <li><a>Bundler Output (Coming Soon)</a></li>
-                                    </ul>
-                                    <hr/>
-                                    <h4 class="title">Tools</h4>
-                                    <ul class="check-list why">
-                                        <li><a href="https://s3.amazonaws.com/nyc3dcars/dpm-models.tar.gz">Trained Detection Models</a></li>
-                                    </ul>
-                                    <ul class="check-list external">
-                                        <li><a href="https://github.com/kmatzen/pydro">Detection Software (pydro)</a></li>
-                                        <li><a href="https://github.com/kmatzen/nyc3dcars-toolkit">Analysis Tools (nyc3dcars-toolkit)</a></li>
-                                        <li><a href="https://github.com/kmatzen/nyc3dcars-labeler">Annotation Software (nyc3dcars-labeler)</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">NYC3DCars</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Kevin Matzen</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
-                                </div>
-                            </div>
-                            <a name="target" id="paper"></a>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <h2 class="title">Paper</h2>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <a href="/static/paper.pdf"><div style="background: #ffffff url(/static/img/paper.jpg) no-repeat center center; background-size:contain; height:400px"></div></a>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8" style="height:400px">
-                                        <h3>NYC3DCars: A Dataset of 3D Vehicles in Geographic Context</h3>
-                                        <h4>Kevin Matzen, Noah Snavely</h4>
-                                        <h5>To appear in Proc ICCV 2013</h5>
-                                        <span style="position:absolute; bottom:0;right:0">
-                                            <p>If you wish to use this dataset or any of the related code for use in your own publication, please include the citation listed below.</p>
-                                            <code>
-                                            @inproceedings{MatzenICCV13, <br/>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;author = {Matzen, Kevin and Snavely, Noah}, <br/>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;title = {NYC3DCars: A Dataset of 3D Vehicles in Geographic Context}, <br/>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;booktitle = {Proc. Int. Conf. on Computer Vision}, <br/>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;year = {2013}, <br/>
-                                            }
-                                            </code>
-                                        </span>
-                                    </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8" style="height:400px">
+                                    <h3>NYC3DCars: A Dataset of 3D Vehicles in Geographic Context</h3>
+                                    <h4>Kevin Matzen, Noah Snavely</h4>
+                                    <h5>To appear in Proc ICCV 2013</h5>
+                                    <p>If you wish to use this dataset or any of the related code for use in your own publication, please include the citation listed below.</p>
+                                    <pre>
+@inproceedings{MatzenICCV13,
+    author = {Matzen, Kevin and Snavely, Noah},
+    title = {NYC3DCars: A Dataset of 3D Vehicles in Geographic Context},
+    booktitle = {Proc. Int. Conf. on Computer Vision},
+    year = {2013},
+}
+                                    </pre>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <a id="about" name="target"></a> 
+            </div>
+            <a id="about"></a> 
             <footer id="footer">
                 <div class="footer-top">
                     <div class="container">
