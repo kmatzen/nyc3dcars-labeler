@@ -64,8 +64,8 @@ h3.title:after {
 
 .our-clients, .service-reasons {
     background: url(../img/2242644091_de3bf6eabd_o.jpg) 50% 0 no-repeat ;
-	background-position: center bottom;
-    background-size: cover;
+	background-position: right bottom;
+    background-size: 1230px;
 }
 
 .client, .service-reasons {

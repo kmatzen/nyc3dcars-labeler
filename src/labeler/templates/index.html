@@ -18,7 +18,44 @@
       <link rel="stylesheet" href="/static/css/style.css">
       <link rel="stylesheet" href="/static/css/colors/blue.css">
       <link rel="stylesheet" href="/static/css/theme-responsive.css">
+      <link rel="stylesheet" href="/static/css/pricing-table.css">
       <link rel="shortcut icon" href="/static/favicon.ico">
+      <style>
+        .bbox {
+            border-style:solid;
+            border-color:#0488cd;
+            border-width:2px;
+            border-radius:10px;
+            position:absolute;    
+            transition: border-color .25s ease-in-out, opacity .25s ease-in-out;
+            -moz-transition: border-color .25s ease-in-out, opacity .25s ease-in-out;
+            -webkit-transition: border-color .25s ease-in-out, opacity .25s ease-in-out;
+            opacity:0.5;
+            z-index:1000;
+        }
+
+        .bbox:hover {
+            border-color:red;
+        }
+
+        .hoverable:hover > .bbox { 
+            opacity:1;
+        }
+
+        .annotation {
+            opacity:0;
+            transition: opacity .25s ease-in-out;
+            -moz-transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+            position:absolute;
+            padding: 30px 30px 30px;
+            z-index:2000;
+        }
+
+        .bbox:hover + .annotation {
+            opacity:1;
+        }
+      </style>
       <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,7 +117,102 @@
                 </div>
             </header>
             <div id="main">
-                <div class="our-clients" style="height:500px"></div>
+                <div class="our-clients visible-xs" style="height:500px;background-position:center bottom;background-size:cover"></div>
+                <div class="our-clients hoverable hidden-xs" style="position:relative;height:500px">
+                    <div class="bbox" style="right:140px;top:310px;width:190px;height:100px;"></div>
+                    <div class="annotation">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="p_table">
+                                        <div class="column_1" style="width:200px">
+                                            <ul>
+                                                 <!-- column header -->
+                                                 <li class="header_row_1 align_center">
+                                                    <h2 class="col1">Sedan</h2>
+                                                 </li>
+                                                 <li class="header_row_2 align_center">
+                                                    <h2 class="col1">Bounding Box</h2>
+                                                    <h3 class="col1">left: 1090, top: 310</h3>
+                                                    <h3 class="col1">width: 190, height: 100</h3>
+                                                 </li>
+                                                 <!-- data rows -->
+                                                 <li class="row_style_3 align_center"><span>Moderately Occluded</span></li>
+                                                 <li class="row_style_1 align_center"><span>Daytime Photo</span></li>
+                                                 <li class="row_style_3 align_center"><span>40° 45.443', -73° 59.155'</span></li>
+                                                 <li class="row_style_1 align_center"><span>7th Avenue</span></li>
+                                                 <li class="row_style_3 align_center"><span>Facing 37.25° W of S</span></li>
+                                                 <li class="footer_row align_center"></li>
+                                              </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bbox" style="right:450px;top:300px;width:130px;height:110px;"></div>
+                    <div class="annotation">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="p_table">
+                                        <div class="column_1" style="width:200px">
+                                            <ul>
+                                                 <!-- column header -->
+                                                 <li class="header_row_1 align_center">
+                                                    <h2 class="col1">SUV</h2>
+                                                 </li>
+                                                 <li class="header_row_2 align_center">
+                                                    <h2 class="col1">Bounding Box</h2>
+                                                    <h3 class="col1">left: 780, top: 300</h3>
+                                                    <h3 class="col1">width: 130, height: 110</h3>
+                                                 </li>
+                                                 <!-- data rows -->
+                                                 <li class="row_style_3 align_center"><span>Slightly Occluded</span></li>
+                                                 <li class="row_style_1 align_center"><span>Daytime Photo</span></li>
+                                                 <li class="row_style_3 align_center"><span>40° 45.445', -73° 59.157'</span></li>
+                                                 <li class="row_style_1 align_center"><span>7th Avenue</span></li>
+                                                 <li class="row_style_3 align_center"><span>Facing 39.4° W of S</span></li>
+                                                 <li class="footer_row align_center"></li>
+                                              </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bbox" style="right:260px;top:320px;width:220px;height:140px;"></div>
+                    <div class="annotation">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="p_table">
+                                        <div class="column_1" style="width:200px">
+                                            <ul>
+                                                 <!-- column header -->
+                                                 <li class="header_row_1 align_center">
+                                                    <h2 class="col1">Sedan</h2>
+                                                 </li>
+                                                 <li class="header_row_2 align_center">
+                                                    <h2 class="col1">Bounding Box</h2>
+                                                    <h3 class="col1">left: 970, top: 320</h3>
+                                                    <h3 class="col1">width: 220, height: 140</h3>
+                                                 </li>
+                                                 <!-- data rows -->
+                                                 <li class="row_style_3 align_center"><span>Unoccluded</span></li>
+                                                 <li class="row_style_1 align_center"><span>Daytime Photo</span></li>
+                                                 <li class="row_style_3 align_center"><span>40° 45.438', -73° 59.163'</span></li>
+                                                 <li class="row_style_1 align_center"><span>7th Avenue and W 44th Street</span></li>
+                                                 <li class="row_style_3 align_center"><span>Facing 39.2° W of S</span></li>
+                                                 <li class="footer_row align_center"></li>
+                                              </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="slogan bottom-pad-small">
                     <div class="container">
                         <div class="row">
@@ -108,7 +240,7 @@
                                 </div>
                                 <div class="content-box-info">
                                     <h2>3D Reconstructions</h2>
-                                    <p>Each photograph in NYC3DCars has been geo-registered to the Earth, providing full camera intrinsics and extrinsics in an Earth-Centered, Earth-Fixed coordinate system enabling seamless integration with existing geospatial solutions.</p>
+                                    <p>Each photograph in NYC3DCars has been geo-registered to the Earth, providing full camera intrinsics and extrinsics in an Earth-Centered, Earth-Fixed coordinate system enabling seamless integration with existing geospatial data.</p>
                                 </div>
                             </div>
                         </div>
@@ -197,12 +329,12 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <h2 class="title">Download</h2>
-                                <p>Use of <a href="http://www.postgresql.org/">PostgreSQL</a> with the <a href="http://postgis.net/">PostGIS</a> package is recommended for working with any of the spatial or geographic data and is required for the use of many of the analysis tools.  JPEG images are distributed separately per reconstruction due to the large size. Geographic data can be obtained either through the original sources or a preprocessed SQL dump can be obtained here.</p>
+                                <p>Use of <a href="http://www.postgresql.org/">PostgreSQL</a> with the <a href="http://postgis.net/">PostGIS</a> package is recommended for working with any of the spatial or geographic data and is required for the use of many of the analysis tools.  JPEG images are distributed separately per reconstruction due to the large size. We provide a link below to our preprocessed geodatabase as well as links to original sources.</p>
                                 <p>Files labeled as PGSQL can be imported into a PostgreSQL database using the following command:</p>
                                 <pre>zcat filename.dump.gz &gt; | pg_restore --dbname=nyc3dcars</pre>
                                 <p>Alternatively, we provide a <a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars_bootstrap.py">script</a> to help download and import all necessary assets.</p>
             
-                                <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In additional, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), and our nyc3dcars-toolkit analysis scripts.</p>
+                                <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In additional, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), our nyc3dcars-toolkit analysis scripts, and the source code for our annotation website.</p>
                             </div>
                         </div> 
                         <div class="row">
@@ -287,14 +419,6 @@
                     <div class="container">
                         <div class="row">
                             <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-one">
-                                <!--
-                                <h3>About</h3>
-                                <p> 
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. 
-                                </p>
-                                -->
-                            </section>
-                            <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-two">
                                 <h3>Contact Us</h3>
                                 <ul class="contact-us">
                                     <li>
@@ -303,13 +427,17 @@
                                     </li>
                                 </ul>
                             </section>
-                            <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-three">
+                            <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-two">
                                 <h3>Acknowledgements</h3>
                                 <p>This work was supported in part by the National Science Foundation under grant NSF-0931686, and by grants from the Intel Science and Technology Center for Visual Computing and Amazon Web Services in Education.</p>
                             </section>
+                            <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-three">
+                                <a href="http://cornell.edu"><div style="background-image:url(/static/img/Cornell_logo-white.gif);width:100%;height:200px;background-size:contain;background-position:center;background-repeat:no-repeat">
+                                </div></a>
+                            </section>
+
                             <section class="col-lg-3 col-md-3 col-xs-12 col-sm-3 footer-four">
-                                <div style="background-image:url(/static/img/Cornell_logo-white.gif);width:100%;height:200px;background-size:contain;background-position:center;background-repeat:no-repeat">
-                                </div>
+                                <a href="http://rgb.cs.cornell.edu"><div style="background-image:url(/static/img/graphics_vision.png);width:100%;height:200px;background-size:contain;background-position:center;background-repeat:no-repeat">
                             </section>
 
                         </div>
