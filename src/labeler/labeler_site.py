@@ -24,7 +24,7 @@ def index():
     return render_template('index.html')
 
 
-@APP.route('/robots.txt')
+#@APP.route('/robots.txt')
 def robots():
     """go away google"""
 

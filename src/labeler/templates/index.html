@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
-   <head>
+<!--[if gt IE 9]><!-->	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="en"> <!--<![endif]-->
+   <head prefix="og: http://ogp.me/ns#">
       <meta charset="utf-8">
       <title>NYC3DCars</title>
       <meta name="description" content="NYC3DCars - A dataset of vehicles in geographic context.">
       <meta name="author" content="Kevin Matzen">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="NYC3DCars">
+      <meta property="og:url" content="http://nyc3d.cs.cornell.edu">
+      <meta property="og:title" content="NYC3DCars">
+      <meta property="og:type" content="website">
+      <meta property="og:description" content="NYC3DCars - A dataset of vehicles in geographic context.">
+      <meta property="og:image" content="http://nyc3d.cs.cornell.edu/static/img/fb_logo.png" />
       <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
       <link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="/static/css/bootstrap.css">
@@ -277,8 +284,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="container">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-0">
                             <iframe src="//player.vimeo.com/video/76784236" width="100%" height="530" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                     </div>
@@ -332,9 +341,9 @@
                                 <p>Use of <a href="http://www.postgresql.org/">PostgreSQL</a> with the <a href="http://postgis.net/">PostGIS</a> package is recommended for working with any of the spatial or geographic data and is required for the use of many of the analysis tools.  JPEG images are distributed separately per reconstruction due to the large size. We provide a link below to our preprocessed geodatabase as well as links to original sources.</p>
                                 <p>Files labeled as PGSQL can be imported into a PostgreSQL database using the following command:</p>
                                 <pre>zcat filename.dump.gz &gt; | pg_restore --dbname=nyc3dcars</pre>
-                                <p>Alternatively, we provide a <a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars_bootstrap.py">script</a> to help download and import all necessary assets.</p>
+                                <p>Alternatively, we provide a <a href="https://raw.github.com/kmatzen/nyc3dcars-toolkit/master/nyc3dcars_bootstrap.py">script</a> to help download and import all necessary assets.</p>
             
-                                <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In additional, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), our nyc3dcars-toolkit analysis scripts, and the source code for our annotation website.</p>
+                                <p>To enable the reproduction of our detection results, we have included the deformable part models that we trained using a combination of our dataset, the <a href="http://pascallin.ecs.soton.ac.uk/challenges/VOC/voc2007/">PASCAL Visual Object Classes Challenge 2007</a> dataset, and the <a href="http://www.cvlibs.net/datasets/kitti/">KITTI Vision Benchmark Suite</a> dataset.  In addition, we provide links to our open source detection software, pydro (a python reimplementation of Pedro Felzenszwalb and Ross Girshick's <a href="http://www.cs.berkeley.edu/~rbg/latent/">voc-release5</a> MATLAB package), our nyc3dcars-toolkit analysis scripts, and the source code for our annotation website.</p>
                             </div>
                         </div> 
                         <div class="row">
@@ -347,8 +356,8 @@
                                 </ul>
                                 <h4 class="title">Vehicle Annotations and Image Metadata</h4>
                                 <ul class="check-list why">
-                                    <li><a>NYC3DCars - CSV (Coming Soon)</a></li>
-                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars.tar.gz">NYC3DCars - PGSQL</a></li>
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars-csv.tar.gz">NYC3DCars - CSV</a></li>
+                                    <li><a href="https://s3.amazonaws.com/nyc3dcars/nyc3dcars.dump.gz">NYC3DCars - PGSQL</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -468,5 +477,16 @@
         <script src="/static/js/waypoints.min.js"></script>
         <script src="/static/js/jquery.gmap.min.js"></script>
         <script src="/static/js/index-custom.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-38604364-1', 'cornell.edu');
+          ga('require', 'linkid', 'linkid.js');
+          ga('send', 'pageview');
+
+        </script>
     </body>
 </html>
